@@ -1,0 +1,26 @@
+{
+  "name": "@soichiro_nitta/lib",
+  "version": "0.0.1",
+  "description": "",
+  "main": "out/index.js",
+  "author": "Soichiro Nitta <soic1226@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soichiro-nitta/lib.git"
+  },
+  "homepage": "https://github.com/soichiro-nitta/lib",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "devDependencies": {
+    "@soichiro_nitta/eslint-config": "^1.0.1",
+    "@soichiro_nitta/prettier-config": "^0.0.9",
+    "eslint": "^7.9.0",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
+  }
+}
