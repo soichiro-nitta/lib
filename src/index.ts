@@ -1,3 +1,4 @@
 import assertIsDefined from './assertIsDefined'
+import { scrollTo } from './scrollTo'
 
-export { assertIsDefined }
+export { assertIsDefined, scrollTo }
