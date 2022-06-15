@@ -5,8 +5,12 @@ export const scrollTo = (
 ) => {
   const scroll = () => {
     if (element.scrollTop === to.top || element.scrollLeft === to.left) {
-      if (callback) callback()
       element.removeEventListener('scroll', scroll)
+      if (callback) {
+        requestAnimationFrame(() => {
+          callback()
+        })
+      }
     }
   }
   element.addEventListener('scroll', scroll)
@@ -15,11 +19,5 @@ export const scrollTo = (
     left: to.left,
     top: to.top,
   })
-  if (
-    (element.scrollTop === to.top || element.scrollLeft === to.left) &&
-    callback
-  ) {
-    callback()
-    element.removeEventListener('scroll', scroll)
-  }
+  scroll()
 }
