@@ -1,23 +1,22 @@
 export const scrollTo = (
   element: HTMLElement,
-  to: { left?: number; top?: number },
-  callback?: () => void
-) => {
-  const scroll = () => {
-    if (element.scrollTop === to.top || element.scrollLeft === to.left) {
-      element.removeEventListener('scroll', scroll)
-      if (callback) {
+  to: { left?: number; top?: number }
+): Promise<void> => {
+  return new Promise((resolve): void => {
+    const scroll = () => {
+      if (element.scrollTop === to.top || element.scrollLeft === to.left) {
+        element.removeEventListener('scroll', scroll)
         requestAnimationFrame(() => {
-          callback()
+          resolve()
         })
       }
     }
-  }
-  element.addEventListener('scroll', scroll)
-  element.scrollTo({
-    behavior: 'smooth',
-    left: to.left,
-    top: to.top,
+    element.addEventListener('scroll', scroll)
+    element.scrollTo({
+      behavior: 'smooth',
+      left: to.left,
+      top: to.top,
+    })
+    scroll()
   })
-  scroll()
 }
