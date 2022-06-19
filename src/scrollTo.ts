@@ -4,7 +4,12 @@ export const scrollTo = (
 ): Promise<void> => {
   return new Promise((resolve): void => {
     const scroll = () => {
-      if (element.scrollTop === to.top || element.scrollLeft === to.left) {
+      if (
+        (to.top !== undefined &&
+          Math.floor(element.scrollTop) === Math.floor(to.top)) ||
+        (to.left !== undefined &&
+          Math.floor(element.scrollLeft) === Math.floor(to.left))
+      ) {
         element.removeEventListener('scroll', scroll)
         requestAnimationFrame(() => {
           resolve()
